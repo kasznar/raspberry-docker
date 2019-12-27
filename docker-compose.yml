@@ -4,15 +4,22 @@ services:
     image: linuxserver/transmission
     container_name: transmission
     environment:
-      - PUID=501
-      - PGID=20
+      - PUID=1000
+      - PGID=1000
       - TZ=Europe/Budapest
     volumes:
       - ./config:/config
       - ./downloads:/downloads
-      - ./watch:/watch
     ports:
-      - 80:9091
+      - 9091:9091
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - ./downloads:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
