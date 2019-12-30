@@ -1,0 +1,5 @@
+services:
+    transmission:
+        restart: always
+    nginx:
+        restart: always
