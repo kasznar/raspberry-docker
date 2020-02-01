@@ -1,4 +1,4 @@
-### Dockerised transmission and nginx http file sharing
+## Dockerised transmission and nginx http file sharing
 
 ### To auto mount the usb HDD add the following to `/etc/fstab` 
 
