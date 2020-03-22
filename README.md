@@ -1,5 +1,13 @@
 ## Dockerised transmission and nginx http file sharing
 
+## Install with `setup.sh`
+
+```
+curl -fsSL https://raw.githubusercontent.com/kasznar/raspberry-docker/master/setup.sh -o setup-docker.sh &&
+sudo sh setup-docker.sh &&
+```
+
+
 ### wifi setup `wpa_supplicant.conf`
 
 ```
@@ -26,15 +34,30 @@ $ sudo sh get-docker.sh
 sudo usermod -aG docker your-user
 ```
 
-### Install docker-compose [as in the documentation](https://docs.docker.com/compose/install/#install-compose-on-linux-systems)
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
+### Install docker-compose with pip, there's no script for arm
 
 ```
-sudo chmod +x /usr/local/bin/docker-compose
+// pip is cursed
+sudo apt update
+sudo apt install -y python3-pip libffi-dev
+
+sudo pip3 install docker-compose
 ```
 
 ### To auto mount the usb HDD add the following to `/etc/fstab` 
 
+```
 UUID=2A704240704212CD /home/pi/raspberry-docker/downloads ntfs defaults,auto,users,rw,nofail,umask=000 0 0
+```
+
+### Start with docker-compose in production mode
+
+```
+docker-compose -f docker-compose.yml -f production.yml up -d
+```
+
+
+
+
+
+
