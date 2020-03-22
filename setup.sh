@@ -38,6 +38,7 @@ docker run -d \
   -p 80:80 \
   -v /home/pi/raspberry-docker/downloads:/usr/share/nginx/html:ro \
   -v /home/pi/raspberry-docker/nginx.conf:/etc/nginx/nginx.conf:ro \
+  --restart unless-stopped \
   nginx &&
 
 echo "setup finished, reboot && enjoy"
