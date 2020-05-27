@@ -6,6 +6,7 @@ apt-get upgrade -y &&
 
 # get the repo
 apt-get install git -y &&
+apt-get install tmux -y &&
 git clone https://github.com/kasznar/raspberry-docker.git &&
 
 # install docker
